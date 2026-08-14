@@ -42,6 +42,7 @@ function selectScenario(id) {
   document.querySelector('#customerMeta').textContent = s.customer.meta;
   document.querySelector('#ticketText').textContent = s.ticket;
   document.querySelector('#facts').innerHTML = s.facts.map(([term, value]) => `<div><dt>${term}</dt><dd>${value}</dd></div>`).join('');
+  document.querySelector('#evidenceList').innerHTML = s.evidence.map(([source, detail]) => `<li><span><strong>${source}</strong> · ${detail}</span></li>`).join('');
   renderTrace(s.trace);
   score.textContent = s.score;
   document.querySelector('.scorebar i').style.width = `${s.score}%`;
