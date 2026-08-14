@@ -14,8 +14,9 @@ ReplayLab addresses that question before production deployment.
 
 ## Current prototype
 
-The initial demo replays a customer-support refund case. It shows:
+The initial demo implements a scenario-based evaluation suite for customer-support refund workflows. It shows:
 
+- four scenarios: the historical case plus controlled tool-outage, approval-threshold, and security-conflict variations;
 - the historical customer case and verified human resolution;
 - the agent's proposed tool-call trace;
 - a step-by-step action comparison;
@@ -47,7 +48,9 @@ Open `http://localhost:4173` in a browser.
 ## Roadmap
 
 - [x] Interactive workflow-replay prototype
-- [ ] Add multiple case types and policy versions
+- [x] Scenario library with controlled operational variations
+- [x] Generate controlled mutations from a known workflow, with security-first prioritization
+- [ ] Add policy versions and mutation templates loaded from JSON
 - [ ] Import JSON traces and historical cases
 - [ ] Define an action-evaluation schema
 - [ ] Add replay scorecards and release gates
@@ -56,3 +59,12 @@ Open `http://localhost:4173` in a browser.
 
 Built from an applied-AI insight: a system can be technically capable while still being operationally unsafe or wrong. ReplayLab translates that problem into a product for AI teams, FDEs, and operations leaders.
 
+## Evaluation foundations
+
+ReplayLab's product direction draws on three complementary ideas:
+
+- [AgentBench](https://arxiv.org/abs/2308.03688): agent capabilities should be evaluated in interactive, multi-step environments rather than with response-only tests.
+- [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework): governance needs measurable, documented risk controls—not a claim that a model is simply "safe."
+- [OpenAI agent tracing](https://openai.github.io/openai-agents-js/guides/tracing/): tool calls and handoffs should be inspectable as a trace, which is the unit ReplayLab evaluates.
+
+The prototype does not claim benchmark validity. It makes the evaluation design concrete: start with verified cases, mutate the operational conditions, inspect the tool trace, and block unsafe release paths.
