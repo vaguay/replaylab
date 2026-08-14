@@ -14,8 +14,9 @@ ReplayLab makes that question visible before production deployment.
 
 ## Current prototype
 
-The initial demo replays a customer-support refund case. It shows:
+The initial demo implements a scenario-based evaluation suite for customer-support refund workflows. It shows:
 
+- four scenarios: the historical case plus controlled tool-outage, approval-threshold, and security-conflict variations;
 - the historical customer case and verified human resolution;
 - the agent's proposed tool-call trace;
 - a step-by-step action comparison;
@@ -47,7 +48,8 @@ Open `http://localhost:4173` in a browser.
 ## Roadmap
 
 - [x] Interactive workflow-replay prototype
-- [ ] Add multiple case types and policy versions
+- [x] Scenario library with controlled operational variations
+- [ ] Add policy versions and a scenario-mutation engine
 - [ ] Import JSON traces and historical cases
 - [ ] Define an action-evaluation schema
 - [ ] Add replay scorecards and release gates
@@ -56,4 +58,3 @@ Open `http://localhost:4173` in a browser.
 ## Portfolio framing
 
 Built from an applied-AI insight: a system can be technically capable while still being operationally unsafe or wrong. ReplayLab translates that problem into a product for AI teams, FDEs, and operations leaders.
-
