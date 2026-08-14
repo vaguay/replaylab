@@ -10,7 +10,7 @@ Organizations are increasingly piloting agents that can act across systems: CRM,
 
 > Did the agent take the correct sequence of actions, with the right evidence, permissions, and escalation path?
 
-ReplayLab makes that question visible before production deployment.
+ReplayLab addresses that question before production deployment.
 
 ## Current prototype
 
