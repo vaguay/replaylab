@@ -50,6 +50,7 @@ Open `http://localhost:4173` in a browser.
 - [x] Interactive workflow-replay prototype
 - [x] Scenario library with controlled operational variations
 - [x] Generate controlled mutations from a known workflow, with security-first prioritization
+- [x] Score traces across outcome, actions, policy/safety, and operational quality
 - [ ] Add policy versions and mutation templates loaded from JSON
 - [ ] Import JSON traces and historical cases
 - [ ] Define an action-evaluation schema

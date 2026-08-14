@@ -19,6 +19,16 @@ function renderTrace(trace) {
   document.querySelector('#traceList').innerHTML = trace.map(([state, number, title, description, label]) => `<li class="${state}"><span class="num">${number}</span><div><strong>${title}</strong><p>${description}</p></div><em>${label}</em></li>`).join('');
 }
 
+function renderEvaluation(evaluation) {
+  document.querySelector('#outcomeScore').textContent = evaluation.outcome;
+  document.querySelector('#actionScore').textContent = evaluation.action;
+  document.querySelector('#policyScore').textContent = evaluation.policy;
+  document.querySelector('#operationsScore').textContent = evaluation.operations;
+  document.querySelector('#releaseDecision strong').textContent = evaluation.decision;
+  document.querySelector('#releaseDecision p').textContent = evaluation.rationale;
+  document.querySelector('#releaseDecision').classList.toggle('blocked', evaluation.decision === 'Blocked');
+}
+
 function selectScenario(id) {
   activeScenario = scenarios.find((scenario) => scenario.id === id);
   const s = activeScenario;
@@ -38,6 +48,7 @@ function selectScenario(id) {
   document.querySelector('#findingLabel').textContent = s.blocker[0];
   document.querySelector('#findingTitle').textContent = s.blocker[1];
   document.querySelector('#findingText').textContent = s.blocker[2];
+  renderEvaluation(s.evaluation);
   renderScenarioCards();
   notify(`${s.label} scenario loaded.`);
 }
