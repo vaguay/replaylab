@@ -53,7 +53,6 @@ Open `http://localhost:4173` in a browser.
 - [ ] Add replay scorecards and release gates
 - [ ] Add sandbox connectors for CRM, order, billing, and knowledge-base tools
 
-## Portfolio framing
 
 Built from an applied-AI insight: a system can be technically capable while still being operationally unsafe or wrong. ReplayLab translates that problem into a product for AI teams, FDEs, and operations leaders.
 
