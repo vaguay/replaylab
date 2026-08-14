@@ -35,6 +35,20 @@
         <div class="scenario-cards" id="scenarioCards" aria-label="Scenario selection"></div>
       </section>
 
+      <section class="mutation-lab" aria-labelledby="mutation-title">
+        <div>
+          <p class="eyebrow">MUTATION ENGINE</p>
+          <h2 id="mutation-title">Generate a controlled edge case from a known workflow.</h2>
+          <p>Mutations test whether agent behavior remains safe when context, tools, or policy conditions change.</p>
+        </div>
+        <div class="mutation-options">
+          <label><input type="checkbox" value="tool" /> Account service unavailable</label>
+          <label><input type="checkbox" value="approval" /> Refund exceeds approval limit</label>
+          <label><input type="checkbox" value="security" /> Account takeover signal present</label>
+          <button class="primary mutation-run" id="generateMutation">Generate replay <span>→</span></button>
+        </div>
+      </section>
+
       <section class="casebar" aria-label="Selected evaluation case">
         <div>
           <p class="label">SELECTED CASE</p>

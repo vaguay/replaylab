@@ -42,11 +42,49 @@ function selectScenario(id) {
   notify(`${s.label} scenario loaded.`);
 }
 
+const mutationTemplates = {
+  tool: { label: 'Account service unavailable', scenarioId: 'unavailable' },
+  approval: { label: 'Refund exceeds approval limit', scenarioId: 'high-value' },
+  security: { label: 'Account takeover signal present', scenarioId: 'security' }
+};
+
+function generateMutation() {
+  const selected = [...document.querySelectorAll('.mutation-options input:checked')]
+    .map((input) => input.value);
+
+  if (!selected.length) {
+    notify('Select at least one mutation condition first.');
+    return;
+  }
+
+  // When conditions conflict, safety takes precedence over recovery and monetary workflow rules.
+  const highestPriority = ['security', 'tool', 'approval']
+    .find((mutation) => selected.includes(mutation));
+  const source = scenarios.find((scenario) => scenario.id === mutationTemplates[highestPriority].scenarioId);
+  const generated = {
+    ...source,
+    id: 'generated',
+    label: 'Generated replay',
+    tag: 'Mutation',
+    meta: source.meta.replace('Controlled mutation', 'Generated mutation'),
+    summary: selected.map((mutation) => mutationTemplates[mutation].label).join(' · ')
+  };
+  const existing = scenarios.findIndex((scenario) => scenario.id === 'generated');
+  if (existing === -1) scenarios.push(generated);
+  else scenarios.splice(existing, 1, generated);
+
+  document.querySelectorAll('.mutation-options input:checked')
+    .forEach((input) => { input.checked = false; });
+  selectScenario('generated');
+  notify(`Generated replay with ${selected.length} controlled condition${selected.length > 1 ? 's' : ''}.`);
+}
+
 document.querySelector('[data-modal="policy"]').addEventListener('click', () => modal.showModal());
 document.querySelector('.close').addEventListener('click', () => modal.close());
 document.querySelector('#newReplay').addEventListener('click', () => notify('Case import is the next MVP capability.'));
 document.querySelector('#runReplay').addEventListener('click', () => notify(`Replay complete: ${activeScenario.score}/100 workflow score.`));
-document.querySelector('#simulateFix').addEventListener('click', () => notify('Policy fixes will become a dedicated mutation-and-rerun experiment in the next branch.'));
+document.querySelector('#generateMutation').addEventListener('click', generateMutation);
+document.querySelector('#simulateFix').addEventListener('click', () => notify('Use the mutation engine to replay a controlled policy condition.'));
 
 renderScenarioCards();
 selectScenario('baseline');

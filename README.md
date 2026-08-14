@@ -49,7 +49,8 @@ Open `http://localhost:4173` in a browser.
 
 - [x] Interactive workflow-replay prototype
 - [x] Scenario library with controlled operational variations
-- [ ] Add policy versions and a scenario-mutation engine
+- [x] Generate controlled mutations from a known workflow, with security-first prioritization
+- [ ] Add policy versions and mutation templates loaded from JSON
 - [ ] Import JSON traces and historical cases
 - [ ] Define an action-evaluation schema
 - [ ] Add replay scorecards and release gates
@@ -58,3 +59,13 @@ Open `http://localhost:4173` in a browser.
 ## Portfolio framing
 
 Built from an applied-AI insight: a system can be technically capable while still being operationally unsafe or wrong. ReplayLab translates that problem into a product for AI teams, FDEs, and operations leaders.
+
+## Evaluation foundations
+
+ReplayLab's product direction draws on three complementary ideas:
+
+- [AgentBench](https://arxiv.org/abs/2308.03688): agent capabilities should be evaluated in interactive, multi-step environments rather than with response-only tests.
+- [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework): governance needs measurable, documented risk controls—not a claim that a model is simply "safe."
+- [OpenAI agent tracing](https://openai.github.io/openai-agents-js/guides/tracing/): tool calls and handoffs should be inspectable as a trace, which is the unit ReplayLab evaluates.
+
+The prototype does not claim benchmark validity. It makes the evaluation design concrete: start with verified cases, mutate the operational conditions, inspect the tool trace, and block unsafe release paths.
