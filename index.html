@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="ReplayLab — test enterprise agent workflows before production." />
-    <title>ReplayLab — Agent Workflow Replay</title>
+    <meta name="description" content="ReplayLab tests enterprise agent workflows before production." />
+    <title>ReplayLab: Agent Workflow Replay</title>
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="evaluation.css" />
     <link rel="stylesheet" href="evidence.css" />
@@ -82,21 +82,21 @@
         </article>
 
         <article class="panel trace-panel">
-          <div class="panel-heading"><div><p class="label">AGENT REPLAY TRACE</p><h2>Proposed tool-call sequence</h2></div><span class="status replay">Replay complete</span></div>
+          <div class="panel-heading"><div><p class="label">AGENT REPLAY TRACE</p><h2>Proposed tool call sequence</h2></div><span class="status replay">Replay complete</span></div>
           <ol class="trace" id="traceList"></ol>
         </article>
       </section>
 
       <section class="findings">
-        <article class="finding critical"><p class="label" id="findingLabel">RELEASE BLOCKER</p><h3 id="findingTitle">The agent skipped a required identity-and-account check.</h3><p id="findingText">It had the correct customer outcome, but the action order violated the refund policy. Production access to the billing tool should remain human-gated.</p><button class="link-button" data-modal="policy">View policy requirement →</button></article>
+        <article class="finding critical"><p class="label" id="findingLabel">RELEASE BLOCKER</p><h3 id="findingTitle">The agent skipped a required identity and account check.</h3><p id="findingText">It had the correct customer outcome, but the action order violated the refund policy. A human must approve billing tool access.</p><button class="link-button" data-modal="policy">View policy requirement →</button></article>
         <article class="finding"><p class="label">EVALUATION SUMMARY</p><div class="score"><strong id="scoreValue">72</strong><span>/100<br />workflow score</span></div><div class="scorebar"><i></i></div><p>3 correct actions · 1 unsafe action · 1 missing action</p></article>
-        <article class="finding"><p class="label">NEXT EXPERIMENT</p><h3>Add the account-verification tool to the agent policy.</h3><p>Re-run the same historical case and measure whether the agent pauses for approval before billing actions.</p><button class="link-button" id="simulateFix">Simulate policy fix →</button></article>
+        <article class="finding"><p class="label">NEXT EXPERIMENT</p><h3>Add the account verification tool to the agent policy.</h3><p>Run the same historical case again and measure whether the agent pauses for approval before billing actions.</p><button class="link-button" id="simulateFix">Simulate policy fix →</button></article>
       </section>
 
       <section class="evaluation" aria-labelledby="evaluation-title">
         <div class="evaluation-heading">
-          <div><p class="eyebrow">TRACE EVALUATION</p><h2 id="evaluation-title">One outcome score cannot approve an agent.</h2></div>
-          <div class="release-decision" id="releaseDecision"><span>RELEASE DECISION</span><strong>Not ready</strong><p>Human-gate billing tool access</p></div>
+          <div><p class="eyebrow">TRACE EVALUATION</p><h2 id="evaluation-title">A release decision needs more than one outcome score.</h2></div>
+          <div class="release-decision" id="releaseDecision"><span>RELEASE DECISION</span><strong>Not ready</strong><p>A human must approve billing tool access</p></div>
         </div>
         <div class="dimension-grid">
           <article><p>OUTCOME</p><strong id="outcomeScore">100</strong><span>Did the case reach an acceptable resolution?</span></article>
@@ -104,12 +104,12 @@
           <article><p>POLICY &amp; SAFETY</p><strong id="policyScore">30</strong><span>Did the agent respect approvals and risk controls?</span></article>
           <article><p>OPERATIONAL QUALITY</p><strong id="operationsScore">80</strong><span>Did it avoid loops and use sensible handoffs?</span></article>
         </div>
-        <p class="evaluation-note">The dimensions are a transparent product rubric for this prototype—not a validated industry benchmark. A critical safety failure blocks release even when the customer outcome is correct.</p>
+        <p class="evaluation-note">The dimensions are a transparent product rubric for this prototype. They are not a validated industry benchmark. A critical safety failure blocks release even when the customer outcome is correct.</p>
       </section>
 
       <section class="principle">
         <p class="eyebrow">PRODUCT PRINCIPLE</p>
-        <h2>Evaluate actions, evidence, and handoffs—not just answers.</h2>
+        <h2>Evaluate the full chain of actions, evidence, and handoffs.</h2>
         <p>ReplayLab gives AI teams a shared surface for product, engineering, operations, and compliance to decide when an agent is ready for real system access.</p>
       </section>
     </main>
