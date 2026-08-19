@@ -91,6 +91,8 @@ function generateMutation() {
   notify(`Generated replay with ${selected.length} controlled condition${selected.length > 1 ? 's' : ''}.`);
 }
 
+
+
 document.querySelector('[data-modal="policy"]').addEventListener('click', () => modal.showModal());
 document.querySelector('.close').addEventListener('click', () => modal.close());
 document.querySelector('#newReplay').addEventListener('click', () => notify('Case import is the next MVP capability.'));
